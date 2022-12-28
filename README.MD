@@ -41,11 +41,11 @@ After a simple introduction, let's make an example.
 ### 4.1. Creating a Java program.
 The first step is to create our Java class and declare its methods to be implemented on another language. As said before, we need to load our library, by using the method `System.loadLibrary(mylibrary)`.
 
-<MainClass.png>
+![image](https://user-images.githubusercontent.com/71560285/209746001-9afd4095-5a4e-4b74-9d2e-3d0590b95e86.png)
 
 Note that, after compile the file, there are no errors.
 
-<MainClassCompileResult.png>
+![MainClassCompileResult](https://user-images.githubusercontent.com/71560285/209746034-a3bcb62f-b7a9-46ae-8aa5-4adb55ca31bf.png)
 
 ### 4.2. Generating C header.
 Java's compiler allows us to generete our C header automatically, using the command below:
@@ -62,14 +62,14 @@ Where:<br>
 
 After execute that command, a new _.h_ is generated. There, we can see all method's signature that we defined as native using the "native" key word.
 
-<headerGenerated.png>
+![headerGenerated](https://user-images.githubusercontent.com/71560285/209746041-fb8eb3d8-4c65-4a26-b59a-eb45d14e73bf.png)
 
 ### 4.3. Implementing the methods with native code.
 After all these steps, now we need to create the implementation of C code to the Java declared methods.
 
 Let's create a new _.c_ file, there, we included the generated header file and implement a function for all methods, following its signature.
 
-<CalculatorInC.png>
+![CalculatorInC](https://user-images.githubusercontent.com/71560285/209746068-b96c4418-4209-421c-9020-38fe9b1c263e.png)
 
 Notice that the methods signature was copy from the generated header, with the difference that all parameters have been changed to have a name that can be referenced in the code.
 
@@ -94,7 +94,7 @@ Where:<br>
 
 All that code needs to be executed in one line. After it, a `libcalculator.dll` will be generated.
 
-<LibGenerated.png>
+![LibGenerated](https://user-images.githubusercontent.com/71560285/209746080-76c71eaf-b61d-4b72-b322-eb2ab86fcc67.png)
 
 ### 4.5. Executing our program.
 After all these steps, we are able to execute our program. Just do it by using the following command on `your/project/java`:
@@ -107,4 +107,4 @@ java -Djava.library.path=location/of/libcalculattor Calculator 2 2
 
 The following image shows the application working:
 
-<Result.png>
+![Result](https://user-images.githubusercontent.com/71560285/209746013-b49383c7-f78d-4146-a208-9fd025811c92.png)
